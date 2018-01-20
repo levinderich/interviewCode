@@ -1,0 +1,47 @@
+<% include partials/head %>
+<% include partials/nav %>
+
+<body>
+<div class="container">
+    <div>
+        <h1>Bookings</h1>
+
+        <div id="tickets">
+            <label for="movie-search">Movie:</label>
+            <input class="custom-search" id="movie-search" placeholder="Movie Name..."/>
+            <label for="cinema-search">Cinema:</label>
+            <input class="custom-search" id="cinema-search" placeholder="Cinema Address..."/>
+            <label for="session-from">Session From:</label>
+            <input class="custom-search" id="session-from" placeholder="Session Date..."/>
+            <label for="session-to">Session To:</label>
+            <input class="custom-search" id="session-to" placeholder="Session Date..."/>
+
+            <table id="ticket-table" class="table table-hover">
+                <thead>
+                <tr>
+                    <th class="sort" data-sort="movie">Movie</th>
+                    <th class="sort" data-sort="cinema">Cinema</th>
+                    <th class="sort" data-sort="session">Session</th>
+                    <th>Total Tickets</th>
+                    <th>User Name</th>
+                </tr>
+                </thead>
+                <tbody class="list">
+                <% bookings.forEach(function(booking) { %>
+                <% booking.tickets.forEach(function(ticket) { %>
+                <tr>
+                    <td class="movie"><%= ticket.session.movie.title %></td>
+                    <td class="cinema"><%= ticket.session.cinema.address %></td>
+                    <td class="session"><%= ticket.session.date %></td>
+                    <td><%= ticket.amount %></td>
+                    <td><%= booking.name %></td>
+                </tr>
+                <% }) %>
+                <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

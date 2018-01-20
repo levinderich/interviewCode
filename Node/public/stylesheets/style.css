@@ -1,0 +1,48 @@
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+/* sort arrow styles, slightly modified from:
+ * https://codepen.io/imarkrige/pen/vgmij */
+.sort:hover {
+  cursor: pointer;
+}
+
+.sort {
+  padding-right: 18px;
+  position: relative;
+}
+
+.sort:before,
+.sort:after {
+  border: 4px solid transparent;
+  content: "";
+  display: block;
+  height: 0;
+  right: 5px;
+  top: 50%;
+  position: absolute;
+  width: 0;
+}
+
+.sort:before {
+  border-bottom-color: #bbb;
+  margin-top: -9px;
+}
+
+.sort:after {
+  border-top-color: #bbb;
+  margin-top: 1px;
+}
+
+.sort.desc:before {
+  border-bottom-color: #000;
+}
+
+.sort.asc:after {
+  border-top-color: #000;
+}

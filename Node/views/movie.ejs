@@ -1,0 +1,109 @@
+<% include partials/head %>
+<% include partials/nav %>
+
+<body>
+<div class="col-sm-8 col-sm-offset-2">
+    <div>
+        <h1><%= movie.title %></h1>
+
+        <h3>Update Details</h3>
+        <form method="post" action="/movie/update/<%= movie.id %>">
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" name="title" class="form-control" value="<%= movie.title %>"/>
+            </div>
+
+            <div class="form-group">
+                <label for="poster">Poster</label>
+                <input type="text" name="poster" class="form-control" value="<%= movie.poster %>"/>
+            </div>
+
+            <div class="form-group">
+                <label for="featured">Featured</label>
+                <select class="form-control" name="featured">
+                    <option value="true" <%= (movie.featured === 'true') ? "selected" : "" %>>True</option>
+                    <option value="false" <%= (movie.featured === 'false') ? "selected" : "" %>>False</option>
+                </select>
+            </div>
+
+            <input class="btn btn-primary" type="submit" value="Update">
+        </form>
+
+        <h3>Sessions</h3>
+        <table class="table">
+            <tr>
+                <th>Cinema</th>
+                <th>Date</th>
+                <th></th>
+            </tr>
+            <% movie.sessions.forEach(function(session) { %>
+            <tr>
+                <td><%= session.cinema.address %></td>
+                <td>
+                    <form method="post" action="/session/update/<%= session.id %>">
+                        <div class="form-group form-inline" style="display: inline;">
+                            <div class="input-group date" id="update-datetime-<%= session.id %>">
+                                <input type="text" name="date" class="form-control"/>
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <input class="btn btn-primary" style="display: inline;" type="submit" value="Update"/>
+                    </form>
+                </td>
+                <td>
+                    <a class="btn btn-danger" href="/session/delete/<%= session.id %>">Delete</a>
+                </td>
+            </tr>
+            <% }) %>
+        </table>
+
+        <h3>New Session</h3>
+        <form method="post" action="/session/create" name="create">
+            <input type="hidden" name="movie" value="<%= movie.id %>"/>
+
+            <div class="form-group">
+                <label for="cinema">Cinema</label>
+                <select class="form-control" name="cinema">
+                    <% cinemas.forEach(function(cinema) { %>
+                    <option value="<%= cinema.id %>"><%= cinema.address %></option>
+                    <% }) %>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <div class='input-group date' id='create-datetime'>
+                    <input type='text' name="date" class="form-control"/>
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+
+            <input class="btn btn-primary" type="submit" value="Create"/>
+            <a class="btn btn-default" href="/">Back</a>
+        </form>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        <% movie.sessions.forEach(function(session) { %>
+        $('#update-datetime-<%= session.id %>').datetimepicker({
+            defaultDate: '<%= session.date %>',
+            locale: 'en-AU',
+            format: 'YYYY-MM-DD hh:mm:ss'
+        });
+        <% }) %>
+
+        $('#create-datetime').datetimepicker({
+            defaultDate: new Date(),
+            locale: 'en-AU',
+            format: 'YYYY-MM-DD hh:mm:ss'
+        });
+    });
+</script>
+</body>
+</html>

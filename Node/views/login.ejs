@@ -1,0 +1,24 @@
+<% include partials/head %>
+
+<body>
+<div class="col-sm-8 col-sm-offset-2">
+    <div class="text-center">
+        <h1><span class="fa fa-sign-in"></span> Login</h1>
+
+        <form action="/login" method="post">
+            <div class="form-group">
+                <label>Email</label>
+                <input type="text" class="form-control" name="email" value="admin@email.com">
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" class="form-control" name="password" value="password"/>
+            </div>
+            <div>
+                <input type="submit" class="form-control" value="Submit"/>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
