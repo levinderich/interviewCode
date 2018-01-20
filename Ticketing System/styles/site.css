@@ -1,0 +1,17 @@
+/* site.css - additional site styles */
+
+.container h1 {
+    padding-bottom: 2%;
+}
+
+.container p {
+    padding-bottom: 2%;
+}
+
+.container button {
+    margin-bottom: 2%;
+}
+
+.error {
+    color: #b94a48;
+}

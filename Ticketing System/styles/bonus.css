@@ -1,0 +1,137 @@
+/* bonus.css - styles for bonus page */
+
+body {
+    margin: 0px;
+    font-family: sans-serif;
+}
+
+h1 {
+    color:#071562;
+    padding-top:1% ;
+    padding-bottom:2%;
+}
+
+.navbar {
+    overflow: hidden;
+    background-color: #12289E;
+}
+
+.navbar a {
+    float: left;
+    padding: 11px 15px;
+    text-decoration: none;
+    color: white;
+    
+    
+}
+
+.navbar a:hover {
+    text-decoration: underline;
+    
+}
+
+
+.navbar ul, .navbar li {
+    display: inline;
+}
+
+.container {
+    width: auto;
+    padding: 15px;
+}
+
+#ticket-table {
+    width: 100%;
+}
+
+input {
+    margin-bottom: 10px;
+}
+
+/* sort arrow styles, slightly modified from:
+ * https://codepen.io/imarkrige/pen/vgmij */
+.sort:hover {
+    cursor: pointer;
+}
+
+.sort {
+    padding-right: 18px;
+    position: relative;
+}
+
+.sort:before,
+.sort:after {
+    border: 4px solid transparent;
+    content: "";
+    display: block;
+    height: 0;
+    right: 5px;
+    top: 50%;
+    position: absolute;
+    width: 0;
+}
+
+.sort:before {
+    border-bottom-color: #bbb;
+    margin-top: -9px;
+}
+
+.sort:after {
+    border-top-color: #bbb;
+    margin-top: 1px;
+}
+
+.sort.desc:before {
+    border-bottom-color: #000;
+}
+
+.sort.asc:after {
+    border-top-color: #000;
+}
+
+th {
+    font-size: 14px;
+	color: #071562;
+	padding: 10px 8px;
+	border-bottom: 2px solid #071562;
+	text-align:center;
+}
+
+td {
+	border-bottom: 1px solid #ccc;
+	color: #071562;
+	padding: 6px 8px;
+	text-align:center;
+}
+
+tbody tr:hover td {
+	color: #0C1E7F;
+}
+
+.navbar-header a:hover {
+    text-decoration: none;
+}
+
+@media screen and (min-width: 768px) {
+    .container {
+        width: 750px;
+        margin: 0 auto;
+        padding: 0px;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .container {
+        width: 970px;
+        margin: 0 auto;
+        padding: 0px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .container {
+        width: 1170px;
+        margin: 0 auto;
+        padding: 0px;
+    }
+}
